@@ -1,0 +1,343 @@
+.content {
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+  width: 450px !important;
+  height: 600px !important;
+  display: flex !important;
+  flex-flow: column;
+  position: relative;
+  background-color: rgb(15, 15, 16);
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+}
+.align-center {
+  justify-content: center !important;
+  align-items: center !important;
+  align-content: center !important;
+  text-align: center !important;
+  margin: auto;
+  /* margin-block-start: 10% !important; */
+}
+.align-end {
+  justify-content: end !important;
+  align-items: end !important;
+  text-align: right !important;
+  margin-left: auto !important;
+}
+.align-start {
+  justify-content: end !important;
+  align-items: end !important;
+  text-align: left !important;
+  margin-right: auto !important;
+}
+.b-round {
+  border: 1px solid rgb(255, 255, 255);
+}
+.b-top {
+  border-top: 1px solid black;
+}
+.b-bottom {
+  border-bottom: 2px solid white;
+}
+.b-left {
+  border-left: 1px solid black;
+}
+.b-right {
+  border-right: 1px solid black;
+}
+.b-top-left {
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+}
+.b-top-right {
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+}
+.b-bottom-left {
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  z-index: 999 !important;
+}
+.b-bottom-right {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  z-index: 999 !important;
+}
+.b-color-white {
+  border-color: white !important;
+}
+.b-none {
+  border: none !important;
+}
+.color-white {
+  color: white !important;
+}
+.complete {
+  flex-basis: 60%;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+.complete_indicator {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 15px;
+  font-size: .6em;
+}
+.fw-light {
+  font-weight: lighter;
+}
+.fw-normal {
+  font-weight: normal;
+}
+.fw-bold {
+  font-weight: bold !important;
+}
+.fw-bolder {
+  font-weight: bolder;
+}
+.fs-5 {
+  font-size: 5em;
+}
+input {
+  display: block !important;
+  color: rgb(241, 241, 241);
+  width: 100% !important;
+  outline: 0 !important;
+  border-bottom: 1px solid rgb(255, 255, 255) !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-top: 0 !important;
+  padding: 0px 0px 0px 0px !important;
+  margin: 0 0 8px 0;
+  background-color: transparent !important;
+  height: 3rem !important;
+  font-size: 16px !important;
+  box-sizing: content-box;
+  box-shadow: none !important;
+}
+input[type="file"] {
+  display: none !important;
+}
+label {
+  font-size: 1rem;
+  color: white !important;
+  text-align: left !important;
+}
+.lh-0 {
+  line-height: 0;
+}
+.l-space {
+  letter-spacing: 4px;
+}
+.loading {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 999;
+}
+.m-0 {
+  margin: 0;
+}
+.md-1 {
+  margin-bottom: 10px;
+}
+.md-p2 {
+  margin-bottom: 2px;
+}
+.md-2 {
+  margin-bottom: 20px;
+}
+.mt-1 {
+  margin-top: 10px !important;
+}
+.mt-10 {
+  margin-top: 100px !important;
+}
+.my_btn:disabled {
+  background-color: rgba(249, 249, 249, 0.331);
+  cursor: not-allowed;
+}
+.my_form {
+  background-color: rgb(27, 27, 29) !important;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 0px 5px !important;
+}
+.my_form > input[type="text"] {
+  border: 0 !important;
+  display: inline-block !important;
+  flex-basis: 85%;
+  margin: 0 !important;
+  padding: 0 10px !important;
+  height: 2.5rem !important;
+  color:rgb(165, 165, 172)
+}
+.my_form > input::placeholder {
+  color: rgb(50, 50, 54);
+}
+.my_form > button {
+  flex-basis: 15%;
+  display: inline-block !important;
+  margin: 0 !important;
+  font-size: 0.8em;
+  padding: 5px 5px !important;
+  background: #cd6260;
+  border-radius: 15px !important;
+  color: white;
+    &:disabled {
+      color: #e0a09f !important;
+      background: #c45d5c;
+      
+    }
+}
+.nav {
+  padding: 50px;
+}
+.p-absolute-bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.p-absolute-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.primary-color {
+  color: black !important;
+}
+.pass-toggler {
+  border: none !important;
+  outline: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+  position: absolute;
+  top: 15px;
+  right: 0;
+}
+.password-holder {
+  position: relative;
+  z-index: 0;
+}
+.p-0 {
+  padding: 0;
+}
+.pxy-px5-py2 {
+  padding: 2px 7px;
+}
+
+.p-1 {
+  padding: 10px;
+}
+.p-2 {
+  padding: 20px !important;
+}
+.placeholder {
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.pending {
+  background-color: #c45d5c;
+}
+.success {
+  background-color: green;
+}
+.sign {
+  width: 100% !important;
+  height: 600px !important;
+}
+.text-danger {
+  color: rgb(191, 24, 24);
+}
+.todo {
+  width: 100% !important;
+  height: 665px !important;
+}
+.todo_list {
+  background-color: rgb(27, 27, 29) !important;
+  color: white;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  text-align: left !important;
+  padding: 10px;
+  flex-basis: 100% !important;
+  flex-flow: row ;
+  flex-wrap: wrap;
+  margin: 15px 0px;
+}
+.todo_list:hover {
+  transform: scale(101%);
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+  transition: all .04s ease-in-out;
+}
+.todo_text {
+  flex-basis: 70%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: 2px 7px;
+  font-size: .9em;
+  color: #9a9aa5;
+  align-items: center;
+}
+.todo_date {
+  flex-basis: 50%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  padding: 5px 10px;
+  font-size: .9em;
+  color: #9a9aa5;
+}
+.todo_btn {
+  flex-basis: 30%;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.todo_btn > button {
+  background: none;
+  padding: 2px 1px !important;
+  color: white;
+  float: right;
+  margin: 0px 1px;
+  border-radius: 0;
+}
+.todo_icon {
+  flex-basis: 20%;
+  padding: 0px 10px;
+  font-size: x-large;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.check {
+  width: 20px !important;
+  border: 1.5px solid white;
+  text-align: center;
+  height: 20px !important;
+  font-size: .6rem !important;
+  margin: 0px 15px !important;
+  border-radius: 5px !important;
+}
+.w-1 {
+  width: 100px !important;
+}
+.w-p10 {
+  width: 10px !important;
+}
+.w-p15 {
+  width: 15px !important;
+}
+.w-p30 {
+  width: 30px !important;
+}
+.mx-1 {
+  margin-left: 5px !important;
+}
