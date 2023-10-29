@@ -97,7 +97,7 @@ function SignUp() {
   return (
     <div className="sign">
       <div className="b-top-right p-absolute-top-right w-1 p-2 align-end b-color-white"></div>
-      {isLoading ? <div className="loading"></div> : <></>}
+      {/* {isLoading ? <div className="loading"></div> : <></>} */}
       <div className="p-1">
         <h5 className="color-white md-2">Sign up</h5>
         <form onSubmit={handleSignUp} className="md-2">

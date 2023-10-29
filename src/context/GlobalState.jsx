@@ -14,6 +14,9 @@ function GlobalState(props) {
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(authState.currentUser));
   }, [authState.currentUser]);
+  useEffect(() => {
+    localStorage.setItem("todo", JSON.stringify(todoState.todo));
+  }, [todoState.todo]);
 
   return (
     <AppContext.Provider

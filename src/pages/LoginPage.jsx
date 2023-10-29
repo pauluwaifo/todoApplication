@@ -45,7 +45,6 @@ function Login() {
       <h1 className="fw-bold color-white lh-0 mt-10 fs-5">TO DO</h1>
       <p className="color-white l-space">Reminds Everything</p>
       <div className="sign mt-10">
-        {isLoading ? <div className="loading"></div> : <></>}
         <div className="b-top-right p-absolute-top-right w-1 p-2 align-end b-color-white"></div>
         <div className="p-2 align-center">
           <h5 className="color-white">Login</h5>
