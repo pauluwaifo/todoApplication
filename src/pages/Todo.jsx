@@ -142,7 +142,9 @@ function Todo() {
                 TO DO
               </button>
             </form>
-            <ul>{list}</ul>
+            <div className="todo_container">
+              <ul>{list}</ul>
+            </div>
           </>
         ) : (
           <p>You Logged out</p>

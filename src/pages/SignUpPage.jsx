@@ -19,61 +19,69 @@ function SignUp() {
   const [country, setCountry] = useState("");
   const [password, setPassword] = useState("");
   const [passwordType, setPasswordType] = useState("password");
+  const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const [per, setPer] = useState(null);
   const { authDispatch, isLoading, loadingDispatch } = useContext(AppContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const uploadFile = () => {
-      const metadata = {
-        contentType: "image/jpeg",
-      };
-      const name = new Date().getTime() + file.name;
-      const storageRef = ref(storage, "images/" + name);
+  useEffect(
+    () => {
+      const uploadFile = () => {
+        const metadata = {
+          contentType: "image/jpeg",
+        };
+        const name = new Date().getTime() + file.name;
+        const storageRef = ref(storage, "images/" + name);
 
-      const uploadTask = uploadBytesResumable(storageRef, file, metadata);
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
-          setPer(progress);
-          switch (snapshot.state) {
-            case "paused":
-              console.log("Upload is paused");
-              break;
-            case "running":
-              console.log("Upload is running");
-              break;
-            default:
-              break;
+        const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            const progress =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log("Upload is " + progress + "% done");
+            setPer(progress);
+            switch (snapshot.state) {
+              case "paused":
+                console.log("Upload is paused");
+                break;
+              case "running":
+                console.log("Upload is running");
+                break;
+              default:
+                break;
+            }
+          },
+          (error) => {
+            switch (error.code) {
+              case "storage/unauthorized":
+                break;
+              case "storage/canceled":
+                break;
+              case "storage/unknown":
+                break;
+              default:
+                break;
+            }
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              setFile((prev) => ({ ...prev, img: downloadURL }));
+            });
           }
-        },
-        (error) => {
-          switch (error.code) {
-            case "storage/unauthorized":
-              break;
-            case "storage/canceled":
-              break;
-            case "storage/unknown":
-              break;
-            default:
-              break;
-          }
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setFile((prev) => ({ ...prev, img: downloadURL }));
-          });
-        }
-      );
-    };
-    file && uploadFile();
-  }, [file]);
+        );
+      };
+      file && uploadFile();
+    },
+    [file],
+    errorMessage
+  );
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    loadingDispatch({ type: "loadingTrue" });
     try {
       // navigate('/')
       const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -87,12 +95,27 @@ function SignUp() {
         timeStamp: serverTimestamp(),
       });
       authDispatch({ type: LOGIN, payload: res.user });
-      loadingDispatch({ type: "loadingTrue" });
       navigate("/");
     } catch (err) {
-      console.log(err);
+      setError(String(err));
+      loadingDispatch({ type: "loadingFalse" });
+      if (error.includes("network-request-failed")) {
+        console.log("network issue");
+        setErrorMessage("Check your network and try again");
+      } else if (error.includes("already-exists")) {
+        console.log("user already exists");
+        setErrorMessage("User already exists");
+      } else if (error.includes("invalid-email")) {
+        console.log("invalid email");
+        setErrorMessage("Enter a valid email address");
+      }
     }
   };
+  // if(isLoading) {
+  //   console.log("loading")
+  // } else {
+  //   console.log("not loading")
+  // }
 
   return (
     <div className="sign">
@@ -111,8 +134,7 @@ function SignUp() {
                     ? `url(${URL.createObjectURL(file)})`
                     : `url(${placeholder})`,
                 }}
-              >
-              </div>
+              ></div>
               Upload image
               {/* : <i className="fas fa-file-upload"></i> */}
             </label>
@@ -122,7 +144,6 @@ function SignUp() {
               onChange={(e) => setFile(e.target.files[0])}
             />
           </div>
-
           {/* Name */}
           <input
             id="name"
@@ -194,6 +215,7 @@ function SignUp() {
           >
             sign up
           </button>
+          <p>{errorMessage}</p>
         </form>
       </div>
       <div className="b-bottom-left p-absolute-bottom-left w-1 p-2 b-color-white"></div>
